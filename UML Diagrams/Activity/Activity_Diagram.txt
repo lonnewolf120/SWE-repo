@@ -1,0 +1,226 @@
+@startuml
+' === Layout and Styling ===
+skinparam classAttributeIconSize 0
+skinparam linetype ortho
+skinparam backgroundColor #f8f8f8
+
+' === Components (Packages) ===
+package "User Interface" #lightblue {
+  class UserApp {
+      -bookingCaregivers()
+      -viewServiceUpdates()
+      -sendMessage()
+      -addMedicineReminder()
+      -viewMedicineReminders()
+      -markReminderAsCompleted()
+      -deleteMedicineReminder()
+      -updateMedicineReminder()
+      -makeAppointment()
+      -viewAppointments()
+  }
+
+  class CaregiverApp {
+      -acceptRequest()
+      -provideServiceUpdates()
+      -sendMessage()
+      -markReminderAsCompleted()
+      -viewAppointments()
+       -updateAvailability()
+  }
+
+  class AdminDashboard {
+      -manageUsers()
+      -manageCaregivers()
+      -manageBookings()
+      -monitorActivities()
+      -generateReports()
+      -manageAppointments()
+  }
+}
+
+package "Backend Services" #lightgreen {
+  class BackendServices {
+      -authenticateUser()
+      -handleBooking()
+      -handleMessaging()
+      -pushNotifications()
+      -sendEmails()
+      -sendSMS()
+      -performSecurityAudits()
+      -generateReports()
+      -handleMedicineReminders()
+      -handleAppointments()
+       -checkAvailability()
+  }
+}
+
+package "Data Storage" #lightyellow {
+  class Database {
+    -usersTable
+    -caregiversTable
+    -bookingsTable
+    -messagesTable
+    -serviceUpdatesTable
+    -activityLogsTable
+    -medicineRemindersTable
+    -appointmentsTable
+        -caregiverAvailabilityTable
+        -caregiverUnavailabilityTable
+  }
+}
+
+package "Data Entities" #lightcoral {
+  class User {
+      - userId
+      - name
+      - email
+      - password
+      - phoneNumber
+      - address
+  }
+
+  class Caregiver {
+    - caregiverId
+    - name
+    - email
+    - password
+    - phoneNumber
+    - specialization
+    - availability
+    - location
+    - rating
+    - nid
+    - image
+    - info
+  }
+
+  class Booking {
+      - bookingId
+      - userId
+      - caregiverId
+      - bookingDate
+      - startTime
+      - endTime
+      - status
+  }
+
+   class Message {
+      - messageId
+      - senderId
+      - receiverId
+      - timestamp
+      - content
+  }
+
+   class ServiceUpdate {
+      - updateId
+      - bookingId
+      - caregiverId
+      - updateTime
+      - content
+  }
+
+  class ActivityLog{
+      - logId
+      - userId
+      - activityType
+      - timeStamp
+  }
+
+    class Notification{
+      - notificationId
+      - recipientId
+      - notificationType
+      - message
+      - timeStamp
+  }
+
+    class MedicineReminder {
+      - reminderId
+      - userId
+      - medicineName
+      - dosage
+      - time
+      - notes
+      - status
+      - creationTime
+  }
+
+  class Appointment {
+    - appointmentId
+    - userId
+    - caregiverId
+    - dateOfService
+    - address
+    - notes
+    - status
+    - creationTime
+  }
+
+   class CaregiverAvailability{
+        -availabilityId
+        -caregiverId
+        -availabilityType
+        -dayOfWeek
+        -month
+        -availableDates
+        -startDate
+        -endDate
+        -startTime
+        -endTime
+    }
+
+    class CaregiverUnavailability{
+        -unavailabilityId
+         -caregiverId
+        -startDate
+        -endDate
+    }
+}
+
+' === Relationships ===
+
+UserApp -- BackendServices : Uses
+CaregiverApp -- BackendServices : Uses
+AdminDashboard -- BackendServices : Uses
+
+BackendServices -- Database : Uses
+
+User *-- UserApp : Uses
+Caregiver *-- CaregiverApp : Uses
+
+AdminDashboard -- User : Manages
+AdminDashboard -- Caregiver : Manages
+AdminDashboard -- Booking : Manages
+AdminDashboard -- Appointment : Manages
+
+User "1" -- "*" Booking : books
+Caregiver "1" -- "*" Booking : provides
+Booking "1" -- "*" ServiceUpdate : has
+User "1" -- "*" Message : sends
+Caregiver "1" -- "*" Message : sends
+
+User "1" -- "*" ActivityLog : generates
+Caregiver "1" -- "*" ActivityLog : generates
+
+User "1" -- "*" Notification : receives
+Caregiver "1" -- "*" Notification : receives
+
+Database -- User : stores
+Database -- Caregiver : stores
+Database -- Booking : stores
+Database -- Message : stores
+Database -- ServiceUpdate : stores
+Database -- ActivityLog : stores
+Database -- Notification : stores
+Database -- MedicineReminder : stores
+Database -- Appointment : stores
+Database -- CaregiverAvailability: stores
+Database -- CaregiverUnavailability : stores
+
+User "1" -- "*" MedicineReminder : creates
+User "1" -- "*" Appointment : makes
+Caregiver "1" -- "*" Appointment : has
+Caregiver "1" -- "*" CaregiverAvailability : has
+Caregiver "1" -- "*" CaregiverUnavailability : has
+@enduml

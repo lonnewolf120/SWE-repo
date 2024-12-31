@@ -1,0 +1,25 @@
+@startuml
+!include <c4/C4_Context>
+
+System_Boundary(c1, "Healthcare Booking System") {
+  Person(user, "User", "Books and manages appointments")
+  Person(caregiver, "Caregiver", "Provides services and manages availability")
+  Person(admin, "Administrator", "Manages system settings and data")
+
+Person(payment_processor, "Payment Processor", "Handles payments")
+Person(map_service, "Map Service", "Provides maps and directions")
+Person(notification_service, "Notification Service", "Sends push notifications")
+
+  System(system, "Healthcare Booking System", "Provides a platform for booking healthcare services", "Flutter, Dart, Bun, etc.")
+
+  Rel(user, system, "Books appointments, views updates, sends messages", "User App")
+  Rel(caregiver, system, "Accepts/rejects requests, updates availability, sends messages", "Caregiver App")
+  Rel(admin, system, "Manages users, caregivers, bookings, and generates reports", "Admin Dashboard")
+
+  Rel(system, payment_processor, "Payment processing", "API calls")
+  Rel(system, map_service, "Navigation assistance", "API calls")
+  Rel(system, notification_service, "Push notifications", "API calls")
+
+}
+
+@enduml

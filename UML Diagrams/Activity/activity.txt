@@ -1,0 +1,68 @@
+@startuml
+start
+
+partition User {
+    :User initiates booking request;
+    :Selects caregiver, date, time, service type;
+}
+
+partition "User App" {
+    :Sends booking request to Backend;
+}
+
+partition "Backend Services" {
+    :Authenticates user;
+    :Validates booking details;
+    :Checks caregiver availability;
+    if (Caregiver available?) then (yes)
+        :Checks for booking conflicts;
+        if (No conflicts?) then (yes)
+            :Creates booking record;
+            :Sends booking confirmation to User App;
+            :Sends notification to caregiver;
+        else (no)
+            :Sends conflict notification to User App;
+        endif
+    else (no)
+        :Sends unavailability notification to User App;
+    endif
+}
+
+partition "Caregiver App" {
+    :Caregiver receives notification;
+    if (Caregiver accepts booking?) then (yes)
+        :Updates booking status to "Accepted";
+        :Sends confirmation to User App;
+    else (no)
+        :Updates booking status to "Rejected";
+        :Sends rejection notification to User App;
+    endif
+}
+
+partition "User App" {
+    :Receives booking confirmation/rejection;
+    :Option to view booking details, track caregiver;
+}
+
+partition User {
+    :Provides feedback (rating/review) after service;
+}
+
+partition "User App" {
+    :Sends feedback to Backend;
+}
+
+partition "Backend Services" {
+    :Updates caregiver's rating;
+    :Updates booking status;
+}
+
+partition "Admin Dashboard" {
+    :Admin monitors booking activities;
+    :Generates reports;
+    :Manages users and caregivers;
+}
+
+stop
+
+@enduml

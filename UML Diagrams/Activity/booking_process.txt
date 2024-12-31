@@ -1,0 +1,39 @@
+@startuml
+' === Swimlanes ===
+|User|
+start
+:User Initiates Booking Request;
+:User selects Caregiver, Date, Time;
+:User App Sends Request to Backend;
+|System|
+:Backend Receives Request;
+:Backend Retrieves Caregiver Availability;
+:Backend Retrieves Caregiver Details and Verification;
+:Backend Retrieves Existing Bookings;
+:Backend Validates Availability;
+
+if (Availability Valid?) then (Yes)
+    |System|
+    :Backend Checks for Conflicts;
+    if (Conflicts?) then (Yes)
+        |User|
+        :Backend Sends Error to User App;
+        :User App Displays Error;
+        stop
+    else (No)
+        |System|
+        :Backend Creates Appointment;
+        :Backend Sends Confirmation to User App;
+        |User|
+        :User App Displays Confirmation;
+        stop
+    endif
+else (No)
+    |System|
+    :Backend Sends Availability Error to User App;
+    |User|
+    :User App Displays Availability Error;
+    stop
+endif
+
+@enduml
