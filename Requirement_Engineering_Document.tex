@@ -1,0 +1,420 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% main.tex %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%                                                                      %
+% --------------------- Report Template IST [EN] --------------------- %
+%                                                                      %
+%       Iftekharul Islam Iftee                                         %
+%       Departament of CSE, MIST                                       %
+%       Bangladesh                                                     %
+%       E-mail: iftekharulislam1594@gmail.com                          %
+%                                                                      %
+%                                                                      %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%  Revision history                                                    %
+%  v1 - 2022/07/30 - original template                                 %
+%  v2 - 2023/04/06 - change superscript in the cover, updated font,    %
+%                    added subfigures and table                        %
+%  v3 - 18/05/2024 - update for using only one font, known by the name %
+%                    of CMU Serif Roman                                %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%                              Preamble                                %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% ----------------------------------------------------------------------
+% Set the document class
+% ----------------------------------------------------------------------
+\documentclass[12pt]{article}
+
+% ----------------------------------------------------------------------
+% Define external packages, language, margins, fonts, new commands 
+% and colors
+% ----------------------------------------------------------------------
+\usepackage[utf8]{inputenc} % Codification
+\usepackage[english]{babel} % Writing idiom
+
+\usepackage[export]{adjustbox} % Align images
+\usepackage{amsmath} % Extra commands for math mode
+\usepackage{amssymb} % Mathematical symbols
+\usepackage{anysize} % Personalize margins
+    \marginsize{2cm}{2cm}{2cm}{2cm} % {left}{right}{above}{below}
+\usepackage{appendix} % Appendices
+\usepackage{cancel} % Expression cancellation
+\usepackage{caption} % Captions
+    \captionsetup{labelfont={bf}}
+\usepackage{cite} % Citations, like [1 - 3]
+\usepackage{enumerate}
+\usepackage{color} % Text coloring
+\usepackage{fancyhdr} % Head note and footnote
+    \pagestyle{fancy}
+    \fancyhf{}
+    \fancyhead[L]{\footnotesize } % Left of Head note
+    \fancyhead[R]{\footnotesize CSE-320 } % Right of Head note
+    \fancyfoot[L]{\footnotesize CSE} % Left of Footnote
+    \fancyfoot[C]{\thepage} % Center of Footnote
+    \fancyfoot[R]{\footnotesize MIST} % Right of Footnote
+    \renewcommand{\footrulewidth}{0.4pt} % Footnote rule
+\usepackage{float} % Utilization of [H] in figures
+\usepackage{graphicx} % Figures in LaTeX
+\usepackage[colorlinks = true, plainpages = true, linkcolor = istblue, urlcolor = istblue, citecolor = istblue, anchorcolor = istblue]{hyperref}
+\usepackage{indentfirst} % First paragraph
+\usepackage[super]{nth} % Superscripts
+\usepackage{siunitx} % SI units
+\usepackage{subcaption} % Subfigures
+\usepackage{titlesec} % Font
+    \titleformat{\section}{\Large\bfseries}{\thesection}{1em}{}
+    \titleformat{\subsection}{\large\bfseries}{\thesubsection}{1em}{}
+    \titleformat{\subsubsection}{\normalsize\bfseries}{\thesubsubsection}{1em}{}
+    \fancyfoot[C]{\thepage}
+
+% Random text (not needed)
+\usepackage{lipsum}
+\usepackage{duckuments}
+
+% New and re-newcommands
+\newcommand{\sen}{\operatorname{\sen}} % Sine function definition
+\newcommand{\HRule}{\rule{\linewidth}{0.5mm}} % Specific rule definition
+\renewcommand{\appendixpagename}{\LARGE Appendices}
+
+% Colors
+
+\usepackage[utf8]{inputenc}
+\usepackage{geometry}
+\usepackage{graphicx}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{enumitem}
+\usepackage{ragged2e}
+\definecolor{istblue}{RGB}{3, 171, 230}
+\definecolor{dkgreen}{rgb}{0,0.6,0}
+\definecolor{gray}{rgb}{0.5,0.5,0.5}
+
+\geometry{a4paper, margin=1in}
+\renewcommand{\baselinestretch}{1.15}
+\usepackage{array}
+\usepackage{cite}
+\usepackage{multirow}
+\usepackage{geometry}
+\geometry{margin=1in}
+\usepackage{mathptmx}
+\usepackage{placeins}
+\usepackage{setspace}
+\renewcommand{\baselinestretch}{1} 
+
+\usepackage[ddmmyyyy]{datetime}
+\renewcommand{\dateseparator}{--}
+
+\usepackage{titlesec}
+\newcolumntype{L}[1]{>{\raggedright\let\newline\\\arraybackslash\hspace{0pt}}m{#1}}
+\newcolumntype{C}[1]{>{\centering\let\newline\\\arraybackslash\hspace{0pt}}m{#1}}
+\newcolumntype{R}[1]{>{\raggedleft\let\newline\\\arraybackslash\hspace{0pt}}m{#1}}
+
+\def\refname{\normalsize References}
+% Arial Font using fontspec (XeLaTeX or LuaLaTeX required)
+% This block will only run if compiling with XeLaTeX or LuaLaTeX
+\ifdefined\XeLaTeX
+\usepackage{fontspec}
+\setmainfont{Arial}
+\fi
+\ifdefined\LuaLaTeX
+\usepackage{fontspec}
+\setmainfont{Arial}
+\fi
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%                                 Document                             %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\usepackage{geometry}
+\geometry{a4paper, margin=1in}
+
+
+\begin{document}
+% ----------------------------------------------------------------------
+% Cover
+% ---------------------------------------------------------------------
+\begin{center}
+    \begin{figure}
+        \centering
+        \includegraphics[width=0.75\linewidth]{logo.png}
+        \label{fig:enter-label}
+    \end{figure}
+    \mbox{}\\[2.0cm]
+    \textsc{\Huge Software Engineering Sessional}\\[2.5cm]
+    \textsc{\Large Subject code: CSE-320}\\[2.0cm]
+    
+    \HRule\\[0.4cm]
+    \textsc{\LARGE Requirement Engineering Document}\\
+    % {\Large \bf {Title -- Hacker's Lair}}\\[0.2cm]
+    \HRule\\[0.4cm]
+\end{center}
+
+\begin{flushleft}
+    \textbf{\large Group members:}
+\end{flushleft}
+
+\begin{center}
+    \begin{minipage}{0.5\textwidth}
+        \begin{flushleft}
+            \large Iftekharul Islam\\
+            \large Mohammad Sadman Shafiq\\
+            \large Istiaque Ahmed Arik\\
+            \large Faiyaz Kamal\\
+            \large Md. Akram Emtiaz\\
+            \large Muntasir Hossain Azmi\\
+            \large Md. Arif Abdullah\\
+        \end{flushleft}
+    \end{minipage}%
+    \begin{minipage}{0.5\textwidth}
+        \begin{flushright}
+            {\texttt{\large 202214024\\}}
+            {\texttt{\large 202114065\\}}
+            {\texttt{\large 202214027\\}}
+            {\texttt{\large 202014075\\}}
+            {\texttt{\large 202014071\\}}
+            {\texttt{\large 202014080\\}}
+            {\texttt{\large 202214038\\}}
+    
+        \end{flushright}
+    \end{minipage}
+\end{center}
+\begin{flushleft}
+    \large $\boxed{\text{\bf Group } 7}$\\[4.0cm]
+\end{flushleft}
+    
+% \begin{center}
+%     \large \bf 2023/2024 -- \nth{2} Semester, P4
+% \end{center}
+
+\thispagestyle{empty}
+
+% \setcounter{page}{0}
+
+% \newpage
+% \begin{center}
+%     \large \bf 2023/2024 -- \nth{2} Semester, P4
+% \end{center}
+
+
+% ----------------------------------------------------------------------
+% Contents
+% ----------------------------------------------------------------------
+% \tableofcontents 
+
+% \newpage
+
+% ----------------------------------------------------------------------
+% Body
+% ----------------------------------------------------------------------
+
+\newpage
+\section*{Requirement Engineering Document: On-Demand Healthcare Platform}
+
+
+\section{Feasibility Study}
+\begin{itemize}
+    \textbf{Project Name:} On-Demand Healthcare Platform for Bangladesh \\
+    \textbf{Client:}   \textit{ParentsCare ltd.} \\
+    \textbf{Prepared By:} Group-7 \\
+    \textbf{Date:} 26/12/2024 
+\end{itemize}
+
+\subsubsection*{\textbf{Objective:}}
+ The primary objective of this project is to launch a reliable scalable on-demand healthcare platform in Bangladesh through mobile apps for users and providers. This platform will tackle accessibility barriers through features explicitly designed to:
+\begin{itemize}
+    \item \textbf{Search \& book services:} Allowing users to easily locate and book nearby healthcare services (caregivers, ambulances) using location-based or filtered search.
+    \item \textbf{Enable Direct Communication:} Providing a secure, real-time in-app messaging \& notification system, facilitating clear and efficient coordination between users and providers.
+    \item \textbf{Customer assistance:} Enabling the users to get proper service through our custom-trained ML models on the data set of medicine and healthcare.
+    \item \textbf{Medicine info \& reminders} Allowing users to scan their prescription to view the medicine name \& info, and set medicine reminders.
+    \item \textbf{Service tracking:} Offer real-time tracking of service providers (e.g., ambulance arrival) and real-time notifications about the caregiver's service.
+    
+\end{itemize}
+\subsection{Feasibility Areas}
+
+\subsubsection{Technical Feasibility}
+\begin{itemize}
+    \item \textbf{Technology Stack:}
+    \begin{itemize}
+        \item \textbf{Frontend:} Flutter (for cross-platform mobile apps), Flutter-web (for Admin Dashboard).
+        \item \textbf{Backend:} Node.js (for scalability and speed), Python (for data analysis/ML integration).
+        \item \textbf{Database:} PostgreSQL (for relational data management), potentially MongoDB (for unstructured data like user feedback).
+        \item \textbf{Cloud Platform:} AWS (Amazon Web Services) or Google Cloud Platform (GCP) for hosting, scalability, and infrastructure.
+        \item \textbf{API Gateway:} RESTful APIs using a framework like Express.js.
+    \end{itemize}
+    \newpage
+    \item \textbf{Infrastructure:} The project requires robust server infrastructure, including:
+    \begin{itemize}
+    \item Load balancers to handle user traffic.
+        \item Secure storage for sensitive patient data.
+        \item Redundant servers for high availability and business continuity.
+        \item We will leverage cloud service providers for the scalability and resilience of this infrastructure.
+    \end{itemize}
+     \item \textbf{Mobile Device Compatibility:} The user app will be compatible with both Android and iOS devices.
+     \item \textbf{GPS Capabilities:} Integration with GPS for ambulance booking and nearby service provider discovery.
+     \item \textbf{Payment Integration:} Secure integration with mobile wallets (bKash, Nagad, etc.) and credit/debit card gateways.
+    \item \textbf{SMS Gateway:} Implementation of an SMS gateway for notifications, alerts, and OTP verification.
+     \item \textbf{Technical Expertise:} The project team possesses, or can acquire, the required technical skills for platform development, maintenance, and security.
+\end{itemize}
+
+\subsubsection{Economic Feasibility}
+\begin{itemize}
+    \item \textbf{Estimated Cost Breakdown:}
+    \begin{itemize}
+        \item \textbf{Development:} 20,000\$ (Software Development, UI/UX Design, Project Management).
+        \item \textbf{Infrastructure:} 5,000\$ (Server costs, database storage, cloud services).
+        \item \textbf{Marketing:} 15,000\$ (Digital campaigns, community engagement).
+        \item \textbf{Operations:} 30,000\$ (Salaries, support, operational software).
+        \item \textbf{Legal and Compliance:} 4,000\$ (Legal consultation, licensing).
+         \item \textbf{Contingency:} 2,000\$ (Unforeseen expenses).
+        \item \textbf{Total Estimated Cost:} 76,000\$ (Initial estimates).
+    \end{itemize}
+    \item \textbf{Revenue Streams:} Subscription fees, commissions on bookings, partnerships, premium services (see details in the financial projections section below).
+    \item \textbf{Long-Term Savings:} Reduced costs through efficient scheduling, optimized resource allocation, and streamlined communication. We will also analyze the potential economic impact on the community through the platform.
+    \item  \textbf{Cost-Benefit Analysis:} A comprehensive analysis will be conducted to compare the costs versus the benefits of the platform.
+\end{itemize}
+
+\subsubsection{Operational Feasibility}
+\begin{itemize}
+    \item \textbf{Training Programs:} Training for platform staff, service providers (caregivers, ambulance drivers), and administrative personnel on how to use the system efficiently.
+     \item \textbf{Usability:} User-friendly UI/UX for mobile apps and admin dashboard, designed to be easily accessible for all levels of tech literacy. This will include localized language support (Bangla).
+      \item \textbf{Customer Support:} A multi-channel customer support system (email, phone, in-app chat) to address user queries and platform-related issues.
+       \item \textbf{Service Provider Enrollment:} A clear, structured onboarding process for healthcare professionals to join the platform.
+        \item \textbf{Scalability and Management:} Ability to scale the platform in terms of users, features, and geographic reach. This also includes the capacity to manage a high volume of concurrent requests and transactions.
+\end{itemize}
+
+\subsubsection{Schedule Feasibility}
+\begin{itemize}
+   \item \textbf{Estimated Timeline:}
+    \begin{itemize}
+     \item \textbf{Requirement Elicitation \& Planning:} 3 weeks
+    \item \textbf{Design (UI/UX) \& Prototyping:} 6 weeks
+    \item \textbf{Backend \& API Development:} 12 weeks
+    \item \textbf{Frontend (User \& Provider App) Development:} 10 weeks
+     \item \textbf{Admin Dashboard Development:} 8 weeks
+        \item \textbf{Integration and Testing:} 6 weeks
+        \item \textbf{Deployment \& Training:} 4 weeks
+        \item \textbf{Total Estimated Time:} 49 weeks (approx. 12 months)
+    \end{itemize}
+    \item \textbf{Project Management Tools:} We will use project management software for task allocation, progress tracking, and communication.
+     \item \textbf{Phased Rollout:} Initial launch with limited features and service area followed by gradual expansion.
+\end{itemize}
+
+\subsubsection{Regulatory Feasibility}
+\begin{itemize}
+\item \textbf{Compliance:} The platform will adhere to all relevant health, data privacy, and telemedicine regulations in Bangladesh.
+\item  \textbf{Licensing:} A thorough analysis of required licenses and permits for online healthcare service operation.
+\item   \textbf{Legal Consultations:} Engagement of legal advisors to ensure compliance and mitigate risks.
+\end{itemize}
+
+\subsubsection{Feasibility Conclusion}
+The On-Demand Healthcare Platform is deemed feasible across technical, economic, operational, schedule, and regulatory perspectives. However, success hinges on a solid execution strategy, ongoing adaptation, and a continued focus on user experience and platform security.
+\section{Requirement Elicitation}
+\subsection{Techniques Used}
+
+\begin{itemize}
+    \item \textbf{Stakeholder Interviews:} In-depth interviews with key stakeholders (healthcare providers, potential users, administrators, health authorities).
+   \item \textbf{Surveys and Questionnaires:} Targeted surveys to collect user preferences, pain points, and needs.
+   \item \textbf{Focus Group Sessions:} Facilitated group discussions to gather feedback and insights from a diverse group of stakeholders.
+   \item \textbf{Document Analysis:} Review of existing healthcare regulations, guidelines, and service delivery models.
+   \item \textbf{Brainstorming Sessions:} Collaborative sessions with the development team and stakeholders to generate ideas and requirements.
+   \item \textbf{Competitive Analysis:} Studying existing on-demand healthcare platforms to identify best practices and areas of innovation.
+\end{itemize}
+
+
+\subsection{Stakeholders}
+\begin{enumerate}
+    \item \textbf{Users/Patients:} Individuals seeking healthcare services (e.g., caregivers, ambulance booking).
+    \item \textbf{Service Providers:} Healthcare professionals offering services via the platform (e.g., nurses, caregivers, ambulance drivers).
+     \item \textbf{Administrators:} Platform managers responsible for user management, system configuration, and reporting.
+     \item \textbf{Healthcare Organizations:} Hospitals, clinics, and other entities that may partner with the platform.
+    \item \textbf{Regulatory Bodies:} Government agencies and health authorities overseeing healthcare delivery.
+     \item \textbf{Investors/Funders:} Entities providing funding for platform development and operations.
+\end{enumerate}
+
+\subsection{Functional Requirements}
+
+\subsubsection{User App}
+
+\begin{itemize}
+    \item \textbf{Service Booking:} Secure and reliable booking of caregivers, ambulance services, and other healthcare services.
+    \item \textbf{Location-Based Search:} Find service providers within the user's vicinity.
+    \item \textbf{User Profiles:} Creation and management of user profiles, including medical history (optionally).
+    \item \textbf{Payment Integration:} Secure payment processing with digital wallets and cards.
+     \item \textbf{Real-Time Tracking:} Track booked service providers (e.g., ambulance arrival).
+    \item \textbf{In-App Messaging:} Secure chat functionality for users and service providers.
+     \item \textbf{Service History:} View past bookings and service requests.
+   \item \textbf{Rating \& Reviews:} Ability to rate and leave reviews for services.
+    \item \textbf{Notification System:} Push notifications for updates, reminders, and critical alerts.
+\end{itemize}
+
+
+\subsubsection{Service Provider App}
+
+\begin{itemize}
+    \item \textbf{Request Management:} Accepting/Rejecting booking requests and updating availability.
+    \item \textbf{Service Updates:} Updating service progress, location, and estimated arrival time.
+    \item \textbf{Profile Management:} Managing service provider profiles (skills, qualifications, certificates).
+    \item \textbf{Navigation Assistance:} Integration with maps for efficient navigation.
+    \item \textbf{In-App Messaging:} Secure chat with users.
+    \item \textbf{Earnings Tracking:} Monitoring payments and earnings.
+    \item \textbf{Availability Management:} Setting and updating work schedule.
+    \item \textbf{Verification Process:} Uploading documents for service provider verification.
+\end{itemize}
+
+\subsubsection{Admin Dashboard}
+\begin{itemize}
+    \item \textbf{User Management:} Monitoring user activity and account status.
+    \item \textbf{Service Provider Management:} Verifying credentials and managing profiles.
+    \item \textbf{Booking Management:} Oversight of all bookings, including cancellations.
+    \item \textbf{Activity Monitoring:} Tracking user activity, service usage, and platform performance.
+   \item \textbf{Reporting and Analytics:} Generating reports on usage patterns, service delivery, and revenue.
+    \item \textbf{System Configuration:} Managing platform settings, pricing, and user access levels.
+    \item \textbf{Payment Management:} Overseeing payment processing and payouts to service providers.
+    \item \textbf{Content Management:} Updating platform content, FAQs, and support information.
+\end{itemize}
+
+\subsection{Non-Functional Requirements}
+
+\subsubsection{Performance}
+\begin{itemize}
+    \item \textbf{Response Time:} Fast response times for user requests and platform operations.
+    \item \textbf{Scalability:} Ability to handle a growing user base and service volume.
+    \item \textbf{System Uptime:} High availability and minimal downtime (99.9\% uptime).
+\end{itemize}
+
+\subsubsection{Security}
+\begin{itemize}
+     \item \textbf{Data Encryption:} Encryption of all sensitive data during transmission and storage.
+    \item \textbf{Authentication and Authorization:} Multi-factor authentication, secure login, role-based access control.
+    \item \textbf{Secure API Endpoints:} Security protocols to protect API access and prevent unauthorized use.
+\end{itemize}
+
+\subsubsection{Usability}
+\begin{itemize}
+    \item \textbf{Intuitive Interface:} Easy-to-use interface for all user types, regardless of technical skills.
+    \item \textbf{Accessibility:} Accessible for users with disabilities, including localized language options.
+    \item \textbf{Clear Navigation:} Simple and intuitive navigation through the app.
+\end{itemize}
+
+\subsubsection{Reliability}
+\begin{itemize}
+    \item \textbf{Data Integrity:} Ensuring data consistency and reliability.
+    \item \textbf{Error Handling:} Robust error handling and recovery mechanisms.
+\end{itemize}
+
+
+\subsubsection{Maintainability}
+\begin{itemize}
+\item \textbf{Modular Design:} Design for easy maintenance, updates, and feature expansion.
+    \item \textbf{Code Quality:} Adherence to coding standards for maintainability.
+\end{itemize}
+
+\subsection{Tools Used}
+\begin{itemize}
+\item \textbf{Interviews:} Structured interviews with healthcare professionals and potential users.
+\item \textbf{Online Surveys:} Surveys using Google Forms to collect user data and feedback.
+\item \textbf{Whiteboard Sessions:} Collaborative brainstorming and requirements gathering using a whiteboard.
+\item \textbf{Project Management Software:} Jira, and Trello for planning and tracking requirements.
+\item \textbf{UI/UX Prototyping Tools:} Figma for creating interactive prototypes.
+\end{itemize}
+
+\subsection{Elicitation Outcome}
+A comprehensive and well-documented set of functional and non-functional requirements that aligns with stakeholders' needs and platform objectives, setting a strong foundation for the subsequent stages of development. This documentation will be continuously reviewed and updated as needed during the development process.
+
+\end{document}
